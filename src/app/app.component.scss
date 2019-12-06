@@ -1,0 +1,52 @@
+body{
+  padding: 2em;
+}
+table{
+  border-collapse: collapse;
+}
+table td{
+  border: 1px black solid;
+  padding: 0.5em;
+  cursor: pointer;
+}
+.var{
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  span{
+    margin-right: 1em;
+    width: 25px;
+  }
+}
+.bitBox{
+  display: flex;
+}
+.bit{
+  border: 1px black solid;
+  padding: 0.5em;
+  cursor: pointer;
+}
+.mark{
+  background: #0089ff;
+  color: white;
+}
+#result{
+  text-decoration: underline;
+  font-weight: bold;
+  color: #0089ff;
+}
+.result{
+  display: none;
+}
+.db{
+  width: 110px;
+  margin-bottom: 1em;
+}
+.db-wrapper{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.noBorder{
+  border: none !important;
+}
