@@ -8,7 +8,7 @@
           <div class="var">
             <span>S01</span>
             <div class="bitBox">
-              <div class="bit" *ngFor="let s of S01 | keyvalue" (click)="S01[s.key] = flip(s.value)">{{s.value}}</div>
+              <div class="bit" *ngFor="let s of S01 | keyvalue" (click)="S01[s.key] = flip(s.value);init();">{{s.value}}</div>
             </div>
           </div>
           <div class="var">
@@ -16,7 +16,7 @@
             <div class="bitBox">
               <div class="bit"
                    *ngFor="let s of S11 | keyvalue"
-                   (click)="S11[s.key] = flip(s.value)"
+                   (click)="S11[s.key] = flip(s.value);init();"
                    [ngClass]="{'mark': S11[s.key] !== S01[s.key]}"
               >{{s.value}}</div>
             </div>
@@ -24,7 +24,7 @@
           <div class="var">
             <span>S02</span>
             <div class="bitBox">
-              <div class="bit" *ngFor="let s of S02 | keyvalue" (click)="S02[s.key] = flip(s.value)">{{s.value}}</div>
+              <div class="bit" *ngFor="let s of S02 | keyvalue" (click)="S02[s.key] = flip(s.value);init();">{{s.value}}</div>
             </div>
           </div>
           <div class="var">
@@ -32,7 +32,7 @@
             <div class="bitBox">
               <div class="bit"
                    *ngFor="let s of S12 | keyvalue"
-                   (click)="S12[s.key] = flip(s.value)"
+                   (click)="S12[s.key] = flip(s.value);init();"
                    [ngClass]="{'mark': S12[s.key] !== S02[s.key]}"
               >{{s.value}}</div>
             </div>
@@ -52,7 +52,7 @@
             </tr>
             <tr *ngFor="let t1 of table | keyvalue">
               <td class="noBorder">y{{+t1.key+1}}</td>
-              <td *ngFor="let t2 of t1.value |keyvalue" (click)="table[t1.key][t2.key] = flip(t2.value)" [ngClass]="{'mark': +t1.key === resultY() && +t2.key === resultX()}">
+              <td *ngFor="let t2 of t1.value |keyvalue" (click)="table[t1.key][t2.key] = flip(t2.value);init();" [ngClass]="{'mark': +t1.key === resultY() && +t2.key === resultX()}">
                 {{t2.value}}
               </td>
             </tr>
@@ -72,46 +72,46 @@
         <div class="db">
           <strong>DB00:</strong><br>
           S01, S02<br>
-          <div *ngIf="log[0]">
+          <div *ngIf="log && log[0]">
             <div *ngFor="let d of log[0]" [innerHTML]="d"></div>
           </div>
           <span class="result">
-            result: {{this.walk( this.S01, this.S02, 0, 'S01' , 'S02')}}
+            result: {{db00}}
           </span>
         </div>
         <div class="db">
           <strong>DB01:</strong><br>
           S01, S12<br>
-          <div *ngIf="log[1]">
+          <div *ngIf="log && log[1]">
             <div *ngFor="let d of log[1]" [innerHTML]="d"></div>
           </div>
           <span class="result">
-            {{this.walk( this.S01, this.S12, 1, 'S01' , 'S12')}}
+            {{db01}}
           </span>
         </div>
         <div class="db">
           <strong>DB10:</strong><br>
           S11, S02<br>
-          <div *ngIf="log[2]">
+          <div *ngIf="log && log[2]">
             <div *ngFor="let d of log[2]" [innerHTML]="d"></div>
           </div>
           <span class="result">
-            {{this.walk( this.S11, this.S02, 2, 'S11', 'S02' )}}
+            {{db10}}
           </span>
         </div>
         <div class="db">
           <strong>DB11:</strong><br>
           S11, S12<br>
-          <div *ngIf="log[3]">
+          <div *ngIf="log && log[3]">
             <div *ngFor="let d of log[3]" [innerHTML]="d"></div>
           </div>
           <span class="result">
-            {{this.walk( this.S11, this.S12, 3, 'S11', 'S12' )}}
+            {{db11}}
           </span>
         </div>
       </div>
       </div>
     </div>
-
+<button (click)="init()">init</button>
   </body>
 </html>

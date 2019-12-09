@@ -17,14 +17,29 @@ export class AppComponent implements OnInit {
 
   log = [];
 
+  db00;
+  db01;
+  db10;
+  db11;
+  result;
+
   constructor() {
     // init table and S variable
-    this.random(4);
-    // this.example();
-    this.resultX();
+    // this.random(4);
+    this.example();
+    // this.resultX();
+    this.init();
   }
 
   ngOnInit() {}
+
+  init(){
+    this.db00 = this.walk( this.S01, this.S02, 0, 'S01' , 'S02');
+    this.db01 = this.walk( this.S01, this.S12, 1, 'S01' , 'S12');
+    this.db10 = this.walk( this.S11, this.S02, 2, 'S11', 'S02' );
+    this.db11 = this.walk( this.S11, this.S12, 3, 'S11', 'S12' );
+    this.endResult();
+  }
 
   random(n){
     for (let i = 0; i < n; i++) {
@@ -94,6 +109,7 @@ export class AppComponent implements OnInit {
     a = this.xor(a, this.walk( this.S01, this.S12 ));
     a = this.xor(a, this.walk( this.S11, this.S02 ));
     a = this.xor(a, this.walk( this.S11, this.S12 ));
+    this.result = a;
     return a;
   }
 
