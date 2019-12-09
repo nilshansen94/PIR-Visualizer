@@ -15,10 +15,6 @@ export class AppComponent implements OnInit {
   S02 = [];
   S12 = [];
 
-  db00 = 0;
-  db01 = 0;
-  db10 = 0;
-  db11 = 0;
   log = [];
 
   constructor() {

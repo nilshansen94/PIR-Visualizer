@@ -9,14 +9,26 @@ table td{
   padding: 0.5em;
   cursor: pointer;
 }
+table tr td{
+  text-align: center;
+}
+table tr td:not(.mark):hover{
+  background: #cae6ff;
+  color: black;
+}
 .var{
   display: flex;
   align-items: center;
-  margin-bottom: 0.5em;
   span{
     margin-right: 1em;
     width: 25px;
   }
+}
+.var:nth-child(2){
+  margin-bottom: 0.5em;
+}
+.var:nth-child(2n-1){
+  margin-bottom: -1px;
 }
 .bitBox{
   display: flex;
@@ -25,10 +37,17 @@ table td{
   border: 1px black solid;
   padding: 0.5em;
   cursor: pointer;
+  width: 2em;
+  text-align: center;
+  margin-left: -1px;
 }
 .mark{
   background: #0089ff;
   color: white;
+}
+.bit:not(.mark):hover{
+  background: #cae6ff;
+  color: black;
 }
 #result{
   text-decoration: underline;
