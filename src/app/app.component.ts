@@ -81,21 +81,29 @@ export class AppComponent implements OnInit {
     else return 0;
   }
 
-  walk( a: number[], b: number[], db = 0, aName = '', bName = ''){
+  walk( a: number[], b: number[], db = -1, aName = '', bName = ''){
     let bit;
+    if( db !== -1 ){
+      this.log[db] = [];
+    }
     for( let i = 0; i< a.length; i++){
       if(a[i] === 0) continue;
       for( let j = 0; j< b.length; j++){
         if(b[j] === 0) continue;
         if(bit === undefined){
           bit = this.table[j][i];
-          this.log[db] = [`DB<sub>${i+1},${j+1}</sub> = ` + this.table[j][i]];
+          if(db !== -1){
+            this.log[db] = [`DB<sub>${i+1},${j+1}</sub> = ` + this.table[j][i]];
+          }
         }else{
           bit = this.xor(bit, this.table[j][i]);
-          this.log[db].push([`&#8853; DB<sub>${i+1},${j+1}</sub>(${this.table[j][i]}) = ${bit}`]);
+          if( db !== -1 ){
+            this.log[db].push([`&#8853; DB<sub>${i+1},${j+1}</sub>(${this.table[j][i]}) = ${bit}`]);
+          }
         }
       }
     }
+    if( bit === undefined ) bit = 0;
     return bit;
   }
 
