@@ -12,7 +12,7 @@ table td{
 table tr td{
   text-align: center;
 }
-table tr td:not(.mark):hover{
+table tr td:not(.mark):not(.noBorder):hover{
   background: #cae6ff;
   color: black;
 }
@@ -45,7 +45,7 @@ table tr td:not(.mark):hover{
   background: #0089ff;
   color: white;
 }
-.bit:not(.mark):hover{
+.bit:not(.mark):not(.noBorder):hover{
   background: #cae6ff;
   color: black;
 }
